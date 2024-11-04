@@ -1,13 +1,11 @@
 import 'package:craftmanapp/config/page%20route/detail/route_name.dart';
 import 'package:craftmanapp/features/authentication/presentation/bloc/cubit/auth_cubit.dart';
-import 'package:craftmanapp/features/authentication/presentation/pages/login_page.dart';
 import 'package:craftmanapp/features/splash_onboarding/data/local/onboardingimages.dart';
 import 'package:craftmanapp/globalwidget/widgets/appscaffold.dart';
 import 'package:craftmanapp/globalwidget/widgets/apptext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../constants/export.dart';
 import '../src/auth_widgets_export.dart';
 
 class SignupPage extends StatefulWidget {

@@ -1,7 +1,5 @@
-import 'package:craftmanapp/globalwidget/widgets/app_checkbox.dart';
-import 'package:flutter/material.dart';
 
-import '../../../../../constants/appcolors.dart';
+import 'package:flutter/material.dart';
 import '../../../../../globalwidget/export.dart';
 
 class Terms extends StatelessWidget {

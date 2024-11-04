@@ -1,15 +1,13 @@
 import 'package:craftmanapp/config/page%20route/detail/route_name.dart';
-import 'package:craftmanapp/constants/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../../../constants/appcolors.dart';
-
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../../constants/craftman_timer.dart';
 import '../../../../globalwidget/export.dart';
-import '../../../splash_onboarding/data/local/onboardingimages.dart';
+
 import '../bloc/cubit/auth_cubit.dart';
 
 class EmailOtp extends StatelessWidget {

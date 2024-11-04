@@ -1,7 +1,6 @@
 import 'package:craftmanapp/config/page%20route/page_route.dart';
 import 'package:craftmanapp/constants/export.dart';
 import 'package:craftmanapp/features/booking/presentation/bloc/cubit/booking_cubit.dart';
-import 'package:craftmanapp/features/booking/presentation/widgets/exports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -74,10 +73,9 @@ class AllBookings extends StatelessWidget {
                                             "${bookings[index].referenceNumber}",
                                         color: Appcolors.blue,
                                         size: 16),
-                                    BookingButton(
+                                    Appbutton(
                                         width: size.width * 0.25,
                                         height: size.height * 0.03,
-                                        radius: size.width * 0.01,
                                         child: AppText(
                                             text: '${bookings[index].status}',
                                             size: 12,
@@ -126,21 +124,15 @@ class AllBookings extends StatelessWidget {
                                     Visibility(
                                         visible:
                                             bookings[index].status == 'pending',
-                                        child: BookingButton(
-                                            ontap: () {
+                                        child: Appbutton(
+                                            onTap: () {
                                               readBooking.selectBooking(
                                                   booking: bookings[index]);
                                               readBooking.cancelBooking();
                                             },
-                                            buttoncolor: Appcolors.redColor,
                                             width: size.width * 0.3,
                                             height: size.height * 0.045,
-                                            radius: size.width * 0.02,
-                                            child: AppText(
-                                                text: 'Cancel',
-                                                size: 12,
-                                                color: Appcolors.white,
-                                                fontweight: FontWeight.w600)))
+                                            label: 'Cancel'))
                                   ])
                             ]))))
             : Column(children: [

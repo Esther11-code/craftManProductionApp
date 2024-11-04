@@ -1,6 +1,5 @@
 import 'package:craftmanapp/constants/export.dart';
 import 'package:craftmanapp/features/authentication/presentation/pages/email_otp.dart';
-import 'package:craftmanapp/features/authentication/presentation/pages/login_page.dart';
 import 'package:craftmanapp/globalwidget/export.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

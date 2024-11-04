@@ -1,6 +1,7 @@
-
 import 'package:craftmanapp/constants/export.dart';
+import 'package:craftmanapp/features/splash_onboarding/data/local/onboard_static_repo.dart';
 import 'package:craftmanapp/features/splash_onboarding/presentation/bloc/cubit/onboarding_cubit.dart';
+import 'package:craftmanapp/globalwidget/export.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,30 +16,47 @@ class BottomNav extends StatelessWidget {
     final readOnboarding = context.read<OnboardingCubit>();
 
     return Scaffold(
-      body: watchOnboarding.screens
-          .elementAt(watchOnboarding.bottonnavSelectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Appcolors.lightgrey,
-        selectedItemColor: Appcolors.orange,
-        backgroundColor: Appcolors.blue,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home, size: 35.sp), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.chat_bubble_2_fill, size: 35.sp),
-              label: 'Messages'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.assignment, size: 35.sp), label: 'Booking'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle, size: 35.sp), label: 'Profile')
-        ],
-        currentIndex: watchOnboarding.bottonnavSelectedIndex,
-        onTap: (value) {
-          readOnboarding.changebottomnavindex(index: value);
-        },
-      ),
-    );
+        body: watchOnboarding.screens[watchOnboarding.bottonnavSelectedIndex],
+        bottomNavigationBar: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AppshadowContainer(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: List.generate(
+                      4,
+                      (index) => GestureDetector(
+                            onTap: () {
+                              readOnboarding.changebottomnavindex(index: index);
+                            },
+                            child: Column(
+                              children: [
+                                Icon(
+                                    OnboardStaticRepo
+                                        .bottomNavItems[index].icon,
+                                    size: 30.sp,
+                                    color: watchOnboarding
+                                                .bottonnavSelectedIndex ==
+                                            index
+                                        ? Appcolors.blackColor
+                                        : Appcolors.lightgrey),
+                                Visibility(
+                                  visible:
+                                      watchOnboarding.bottonnavSelectedIndex ==
+                                          index,
+                                  child: AppText(
+                                      text: OnboardStaticRepo
+                                          .bottomNavItems[index].title,
+                                      fontweight: FontWeight.w500,
+                                      size: 14,
+                                      color: Appcolors.blackColor),
+                                )
+                              ],
+                            ),
+                          ))),
+            ),
+          ],
+        ));
   }
 }

@@ -2,7 +2,6 @@ import 'package:craftmanapp/config/page%20route/page_route.dart';
 import 'package:craftmanapp/constants/export.dart';
 import 'package:craftmanapp/features/splash_onboarding/data/local/onboardingimages.dart';
 import 'package:craftmanapp/globalwidget/export.dart';
-import 'package:craftmanapp/globalwidget/widgets/appscaffold.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/exports.dart';

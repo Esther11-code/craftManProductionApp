@@ -4,10 +4,8 @@ import 'package:craftmanapp/features/splash_onboarding/data/local/onboardingimag
 import 'package:craftmanapp/features/splash_onboarding/presentation/bloc/cubit/onboarding_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../globalwidget/export.dart';
 import '../../../authentication/presentation/bloc/cubit/auth_cubit.dart';
-import '../../../authentication/presentation/pages/login_page.dart';
 import '../../../booking/presentation/bloc/cubit/booking_cubit.dart';
 import '../../../home/presentation/bloc/cubit/home_cubit.dart';
 

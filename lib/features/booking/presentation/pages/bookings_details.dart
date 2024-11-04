@@ -1,7 +1,5 @@
 import 'package:craftmanapp/constants/util/useful_methods.dart';
 import 'package:craftmanapp/features/booking/presentation/bloc/cubit/booking_cubit.dart';
-import 'package:craftmanapp/features/booking/presentation/widgets/src/booking_button.dart';
-import 'package:craftmanapp/features/booking/presentation/widgets/src/bookingtextfield.dart';
 import 'package:craftmanapp/features/home/presentation/widget/src/profile_pic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -100,16 +98,15 @@ class BookingDetail extends StatelessWidget {
                             color: Appcolors.blue,
                             fontweight: FontWeight.w500),
                         SizedBox(height: size.height * 0.02),
-                        BookingButton(
+                        Appbutton(
                             width: size.width,
                             height: size.height * 0.055,
-                            radius: size.width * 0.02,
                             child: AppText(
                                 text: 'Rate Now',
                                 size: 12,
                                 color: Appcolors.white,
                                 fontweight: FontWeight.w600),
-                            ontap: () => showModalBottomSheet(
+                            onTap: () => showModalBottomSheet(
                                 context: context,
                                 backgroundColor: Appcolors.white,
                                 isScrollControlled: true,
@@ -123,17 +120,11 @@ class BookingDetail extends StatelessWidget {
                                   );
                                 })),
                         SizedBox(height: size.height * 0.02),
-                        BookingButton(
-                            boderColor: Appcolors.orange,
-                            buttoncolor: Appcolors.white,
-                            width: size.width,
-                            height: size.height * 0.055,
-                            radius: size.width * 0.02,
-                            child: AppText(
-                                text: 'Request Invoice',
-                                size: 12,
-                                color: Appcolors.blue,
-                                fontweight: FontWeight.w600))
+                        Appbutton(
+                          width: size.width,
+                          height: size.height * 0.055,
+                          label: 'Request Invoice',
+                        )
                       ])))
         ]));
   }
@@ -181,10 +172,10 @@ class RatingModalSheet extends StatelessWidget {
               color: Appcolors.blue,
               fontweight: FontWeight.w500),
           SizedBox(height: size.height * 0.01),
-          BookingTextfield(
+          ApptextField(
               controller: watchBookingCubit.ratingController,
-              maxline: 6,
-              hintext: 'Write about your experiance'),
+              // maxline: 6,
+              hintText: 'Write about your experiance'),
           SizedBox(height: size.height * 0.04),
           Appbutton(
               isLoading: watchBookingCubit.state is BookingLoadingState,
