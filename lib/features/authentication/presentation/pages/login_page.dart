@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
               height: size.height * 0.15, width: size.width * 0.9),
           Center(
               child: AppText(
-                  text: 'Welcome to CraftMan',
+                  text: 'Welcome Back!',
                   fontweight: FontWeight.w600,
                   size: 21,
                   color: Appcolors.blue)),
@@ -80,11 +80,17 @@ class LoginPage extends StatelessWidget {
                       status: watchAuthCubit.stayLogin),
                   Align(
                       alignment: Alignment.centerRight,
-                      child: AppText(
-                          text: 'Forget Password?',
-                          size: 14,
-                          color: Appcolors.blue,
-                          fontweight: FontWeight.w700)),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, RouteName.forgetPassword);
+                        },
+                        child: AppText(
+                            text: 'Forget Password?',
+                            size: 14,
+                            color: Appcolors.blue,
+                            fontweight: FontWeight.w700),
+                      )),
                   SizedBox(height: size.height * 0.04),
                   Appbutton(
                       isLoading: watchAuthCubit.state is AuthLoadingState,

@@ -1,10 +1,12 @@
 import 'package:craftmanapp/config/page%20route/detail/route_name.dart';
 import 'package:craftmanapp/features/authentication/presentation/bloc/cubit/auth_cubit.dart';
+import 'package:craftmanapp/features/authentication/presentation/pages/login_page.dart';
 import 'package:craftmanapp/features/splash_onboarding/data/local/onboardingimages.dart';
 import 'package:craftmanapp/globalwidget/widgets/appscaffold.dart';
 import 'package:craftmanapp/globalwidget/widgets/apptext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../constants/export.dart';
 import '../src/auth_widgets_export.dart';
 
@@ -29,62 +31,41 @@ class _SignupPageState extends State<SignupPage> {
       },
       child: AppScaffold(
         isloading: context.watch<AuthCubit>().state is AuthLoadingState,
-        color: Appcolors.blue,
         body: Column(children: [
-          Expanded(
-              child: Container(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
-            width: size.width,
-            color: Appcolors.white,
-            child: Form(
-              key: formKey,
-              child: SingleChildScrollView(
-                controller: ScrollController(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: size.height * 0.02),
-                    AppText(
-                        text: 'Signup',
-                        fontweight: FontWeight.w800,
-                        color: Appcolors.blue,
-                        size: 30),
-                    SizedBox(height: size.height * 0.01),
-                    AppText(
-                        text: 'Create New Account',
-                        fontweight: FontWeight.w600,
-                        color: Appcolors.blue),
-                    AppText(
-                        text: 'Complete form to create new account',
-                        size: 16,
-                        color: Appcolors.lightgrey),
-                    SizedBox(height: size.height * 0.01),
-                    const SignupFirstnameTextfield(),
-                    SizedBox(height: size.height * 0.01),
-                    const SignupEmailTextfield(),
-                    SizedBox(height: size.height * 0.025),
-                    const SignupPhoneTextField(),
-                    SizedBox(height: size.height * 0.025),
-                    const SignupPasswodtTextfield(),
-                    SizedBox(height: size.height * 0.025),
-                    const SigupTermsAndCondition(),
-                    SizedBox(height: size.height * 0.04),
-                    SignupButton(formKey: formKey),
-                    SizedBox(height: size.height * 0.02),
-                    SignupOrLogin(
-                        ontap: () {
-                          Navigator.pushNamed(context, RouteName.login);
-                        },
-                        subTitle: 'Login',
-                        title: 'Already have an account?'),
-                    SizedBox(height: size.height * 0.04),
-                    Image.asset(OnboardingImagesData.welcome,
-                        height: size.height * 0.15, width: size.width * 0.9),
-                  ],
-                ),
+          Image.asset(OnboardingImagesData.welcome,
+              height: size.height * 0.15, width: size.width * 0.9),
+          Form(
+            key: formKey,
+            child: Expanded(
+              child: ListView(
+                padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                children: [
+                  const AppText(
+                      text: 'Create New Account', fontweight: FontWeight.w500),
+                  SizedBox(height: size.height * 0.01),
+                  const SignupFirstnameTextfield(),
+                  15.verticalSpace,
+                  const SignupEmailTextfield(),
+                  15.verticalSpace,
+                  const SignupPhoneTextField(),
+                  15.verticalSpace,
+                  const SignupPasswodTextfield(),
+                  15.verticalSpace,
+                  const SigupTermsAndCondition(),
+                  SizedBox(height: size.height * 0.04),
+                  SignupButton(formKey: formKey),
+                  SizedBox(height: size.height * 0.02),
+                  SignupOrLogin(
+                      ontap: () {
+                        Navigator.pushNamed(context, RouteName.login);
+                      },
+                      subTitle: 'Login',
+                      title: 'Already have an account?'),
+                  SizedBox(height: size.height * 0.04),
+                ],
               ),
             ),
-          ))
+          )
         ]),
       ),
     );

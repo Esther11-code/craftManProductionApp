@@ -1,6 +1,5 @@
 import 'package:craftmanapp/globalwidget/widgets/apptext.dart';
 import 'package:flutter/material.dart';
-import '../../../../../constants/appcolors.dart'; 
 
 class SignupOrLogin extends StatelessWidget {
   const SignupOrLogin(
@@ -10,13 +9,10 @@ class SignupOrLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      AppText(text: '$title ', color: Appcolors.lightgrey),
+      AppText(text: '$title '),
       GestureDetector(
           onTap: ontap,
-          child: AppText(
-              text: subTitle,
-              color: Appcolors.blue,
-              fontweight: FontWeight.w700))
+          child: AppText(text: subTitle, fontweight: FontWeight.w600))
     ]);
   }
 }

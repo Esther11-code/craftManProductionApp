@@ -4,7 +4,8 @@ import 'package:craftmanapp/features/account/presentation/pages/change_password.
 import 'package:craftmanapp/features/account/presentation/pages/contact_us.dart';
 import 'package:craftmanapp/features/account/presentation/pages/notifications.dart';
 import 'package:craftmanapp/features/authentication/presentation/pages/email_otp.dart';
-import 'package:craftmanapp/features/authentication/presentation/pages/login_page.dart'; 
+import 'package:craftmanapp/features/authentication/presentation/pages/forget_password.dart';
+import 'package:craftmanapp/features/authentication/presentation/pages/login_page.dart';
 import 'package:craftmanapp/features/authentication/presentation/pages/signup_page.dart';
 import 'package:craftmanapp/features/booking/presentation/pages/bookings_details.dart';
 import 'package:craftmanapp/features/home/presentation/pages/category_page.dart';
@@ -21,6 +22,7 @@ import 'package:craftmanapp/features/splash_onboarding/presentation/pages/onboar
 import 'package:craftmanapp/features/splash_onboarding/presentation/pages/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../../features/authentication/presentation/pages/reset_password.dart';
 import '../../../features/authentication/presentation/pages/success_login.dart';
 import 'custom_page_route.dart';
 
@@ -59,8 +61,11 @@ class AppRoute {
       case RouteName.login:
         return CustomPageRoute(child: const LoginPage());
       case RouteName.successLogin:
-        return CustomPageRoute(child: const LoginSuccessPage( ));
-     
+        return CustomPageRoute(child: const LoginSuccessPage());
+      case RouteName.forgetPassword:
+        return CustomPageRoute(child: const ForgetPasswordPage());
+      case RouteName.resetPassword:
+        return CustomPageRoute(child: const ResetPasswordPage());
       case RouteName.skilldetail:
         return CustomPageRoute(child: const SkillsDetail());
       case RouteName.serviceproviderdetail:

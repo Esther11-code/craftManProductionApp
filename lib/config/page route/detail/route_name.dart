@@ -9,6 +9,8 @@ class RouteName {
   static const successLogin = '/successLogin';
   static const emailotp = '/emailotp';
   static const login = '/login';
+  static const forgetPassword = '/forget-password';
+  static const resetPassword = '/reset-password';
   static const skilldetail = '/skillsdetail';
   static const serviceproviderdetail = '/serviceproviderdetail';
   static const chat = '/chats';
