@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../constants/export.dart';
+import '../../../../../globalwidget/export.dart';
 
 class ServiceproviderInfo extends StatelessWidget {
   const ServiceproviderInfo(

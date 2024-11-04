@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../constants/export.dart';
+import '../../../../globalwidget/export.dart';
 import '../widget/export.dart';
 
 class SkillsDetail extends StatelessWidget {
@@ -17,7 +18,7 @@ class SkillsDetail extends StatelessWidget {
     final watchHomeCubit = context.watch<HomeCubit>();
     final size = MediaQuery.sizeOf(context);
     return AppScaffold(
-        loadWithloader: watchHomeCubit.state is HomeLoading,
+        isloading: watchHomeCubit.state is HomeLoading,
         color: Appcolors.blue,
         body: Column(children: [
           CustomAppbar(title: watchHomeCubit.selectedCategory),

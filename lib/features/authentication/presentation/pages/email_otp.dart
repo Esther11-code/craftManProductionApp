@@ -1,15 +1,14 @@
-import 'package:craftmanapp/features/authentication/presentation/pages/login_page.dart';
-import 'package:craftmanapp/features/authentication/presentation/pages/mobile_0tp.dart';
+ 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../../../constants/appcolors.dart';
-import '../../../../constants/appscaffold.dart';
-import '../../../../constants/apptext.dart';
+
+import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../../constants/craftman_timer.dart';
+import '../../../../globalwidget/export.dart';
 import '../../../splash_onboarding/data/local/onboardingimages.dart';
 import '../bloc/cubit/auth_cubit.dart';
-import '../src/auth_widgets_export.dart';
 
 class EmailOtp extends StatelessWidget {
   const EmailOtp({super.key});
@@ -21,14 +20,7 @@ class EmailOtp extends StatelessWidget {
     final readAuthCubit = context.read<AuthCubit>();
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is AuthEmailVerifiedState) {
-          showDialog(
-              barrierDismissible: false,
-              context: context,
-              builder: (context) {
-                return const AuthAlertDialog(title: 'Created');
-              });
-        }
+        if (state is AuthEmailVerifiedState) {}
       },
       child: AppScaffold(
         isloading: watchAuthCubit.state is AuthLoadingState,
@@ -40,7 +32,7 @@ class EmailOtp extends StatelessWidget {
             width: size.width,
             color: Appcolors.white,
             child: SingleChildScrollView(
-              controller: ScrollController(),
+              
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -95,17 +87,12 @@ class EmailOtp extends StatelessWidget {
                         )
                       ]),
                   SizedBox(height: size.height * 0.08),
-                  AuthButton(
-                      isloading: watchAuthCubit.state is AuthLoadingState,
+                  Appbutton(
+                      isLoading: watchAuthCubit.state is AuthLoadingState,
                       width: size.width,
                       height: size.width * 0.13,
-                      radius: size.width * 0.03,
-                      ontap: () => readAuthCubit.verifyEmail(),
-                      child: AppText(
-                          text: 'Proceed',
-                          color: Appcolors.white,
-                          size: 20,
-                          fontweight: FontWeight.w700)),
+                      onTap: () => readAuthCubit.verifyEmail(),
+                      label: 'Proceed'),
                   SizedBox(height: size.height * 0.04),
                   Image.asset(OnboardingImagesData.welcome,
                       fit: BoxFit.contain,
@@ -118,5 +105,29 @@ class EmailOtp extends StatelessWidget {
         ]),
       ),
     );
+  }
+}
+
+
+
+class CustomOtpField extends StatelessWidget {
+  const CustomOtpField({super.key, this.controller});
+  final TextEditingController? controller;
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+    return PinCodeTextField(
+        keyboardType: TextInputType.number,
+        controller: controller,
+        pinTheme: PinTheme(
+            activeColor: Appcolors.orange,
+            inactiveColor: Appcolors.lightgrey,
+            selectedColor: Appcolors.blue,
+            borderRadius: BorderRadius.circular(size.width * 0.03),
+            shape: PinCodeFieldShape.box,
+            fieldHeight: size.height * 0.07,
+            fieldWidth: size.height * 0.07),
+        appContext: context,
+        length: 6);
   }
 }

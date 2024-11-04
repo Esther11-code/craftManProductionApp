@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/page route/page_route.dart';
 import '../../../../../constants/export.dart';
+import '../../../../../globalwidget/export.dart';
 import '../../../../splash_onboarding/data/local/onboardingimages.dart';
 import '../export.dart';
 

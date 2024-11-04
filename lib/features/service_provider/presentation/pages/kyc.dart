@@ -1,15 +1,12 @@
-
-
 import 'package:craftmanapp/constants/export.dart';
-import 'package:craftmanapp/features/account/presentation/widgets/exports.dart';
 import 'package:craftmanapp/features/authentication/presentation/bloc/cubit/auth_cubit.dart';
-import 'package:craftmanapp/features/authentication/presentation/src/auth_widgets_export.dart';
 import 'package:craftmanapp/features/service_provider/presentation/bloc/cubit/kyc_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../globalwidget/export.dart';
 import '../../data/local/kyc_static_repo.dart';
 
 class KYC extends StatefulWidget {
@@ -75,11 +72,10 @@ class _KYCState extends State<KYC> {
                           ThirdPage(size: size),
                           FourthPage(size: size)
                         ])),
-                    AccountButton(
+                    Appbutton(
                         width: size.width,
                         height: size.height * 0.06,
-                        radius: size.width * 0.03,
-                        ontap: () {
+                        onTap: () {
                           kycController.nextPage(
                               duration: const Duration(milliseconds: 800),
                               curve: Curves.easeInOut);
@@ -141,38 +137,36 @@ class FirstPage extends StatelessWidget {
               text: 'Fill Your Personal\nInformation',
               fontweight: FontWeight.w700),
           SizedBox(height: size.height * 0.02),
-          AcctTextfield(
+          ApptextField(
               controller: watchAuth.firstNameController,
-              hintext: 'First Name',
-              prefixicon: Icon(Icons.work, size: 20.sp)),
+              hintText: 'First Name',
+              prefixIcon: Icons.work),
           SizedBox(height: size.height * 0.02),
-          AcctTextfield(
+          ApptextField(
               controller: watchAuth.lastNameController,
-              hintext: 'Last Name',
-              prefixicon: Icon(Icons.work, size: 20.sp)),
+              hintText: 'Last Name',
+              prefixIcon: Icons.work),
           SizedBox(height: size.height * 0.02),
-          AcctTextfield(
+          ApptextField(
               controller: watchAuth.emailController,
-              hintext: 'Email ',
-              prefixicon: Icon(Icons.work, size: 20.sp)),
+              hintText: 'Email ',
+              prefixIcon: Icons.work),
           SizedBox(height: size.height * 0.02),
-          AcctTextfield(
-              hintext: 'Ofiice Address',
-              prefixicon: Icon(Icons.location_pin, size: 20.sp)),
+          const ApptextField(
+              hintText: 'Ofiice Address', prefixIcon: Icons.location_pin),
           SizedBox(height: size.height * 0.02),
-          AcctTextfield(
-              hintext: 'Alt Address',
-              prefixicon: Icon(Icons.location_pin, size: 20.sp)),
+          const ApptextField(
+              hintText: 'Alt Address', prefixIcon: Icons.location_pin),
           SizedBox(height: size.height * 0.02),
-          AcctTextfield(
+          ApptextField(
               controller: watchAuth.passwordController,
-              hintext: 'Phone',
-              prefixicon: Icon(Icons.phone_android, size: 20.sp)),
+              hintText: 'Phone',
+              prefixIcon: Icons.phone_android),
           SizedBox(height: size.height * 0.02),
-          AcctTextfield(
+          const ApptextField(
               // controller: watchAuth.passwordController,
-              hintext: 'About you',
-              prefixicon: Icon(Icons.person_2, size: 20.sp)),
+              hintText: 'About you',
+              prefixIcon: Icons.person_2),
           SizedBox(height: size.height * 0.08),
         ],
       ),
@@ -221,7 +215,7 @@ class SecondPage extends StatelessWidget {
           SizedBox(height: size.height * 0.03),
           const AppText(text: 'How much do you charge', size: 14),
           SizedBox(height: size.height * 0.01),
-          const AcctTextfield(hintext: '\$20 Per Installation '),
+          const ApptextField(hintText: '\$20 Per Installation '),
           SizedBox(height: size.height * 0.03),
           const AppText(
               text: 'Upload photos of your craft(minimum of 5 photos)',
@@ -293,7 +287,7 @@ class ListOfCraftModalSheet extends StatelessWidget {
                                     AppText(
                                         text: KycStaticRepo.craft[index],
                                         fontweight: FontWeight.w600),
-                                    AuthCheckbox(
+                                    AppCheckbox(
                                         status: true,
                                         width: size.width * 0.1,
                                         height: size.width * 0.1,
@@ -437,7 +431,7 @@ class _IdTypeDropdownState extends State<IdTypeDropdown> {
                             text: KycStaticRepo.ids[index],
                             fontweight: FontWeight.w600,
                             size: 16),
-                        AuthCheckbox(
+                        AppCheckbox(
                             status: false,
                             width: widget.size.width * 0.07,
                             height: widget.size.width * 0.07,

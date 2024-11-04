@@ -1,8 +1,8 @@
+import 'package:craftmanapp/globalwidget/widgets/app_checkbox.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../constants/appcolors.dart';
-import '../../../../../constants/apptext.dart';
-import 'auth_checkbox.dart';
+import '../../../../../globalwidget/export.dart';
 
 class Terms extends StatelessWidget {
   const Terms({
@@ -25,7 +25,7 @@ class Terms extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          AuthCheckbox(
+          AppCheckbox(
             ontap: ontap,
             status: status,
             height: size.width * 0.08,

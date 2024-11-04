@@ -3,6 +3,8 @@ import 'package:craftmanapp/constants/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../globalwidget/export.dart';
+
 class Notifications extends StatelessWidget {
   const Notifications({super.key});
 
@@ -10,7 +12,7 @@ class Notifications extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return AppScaffold(
-        color: Appcolors.blue,
+ 
         body: Column(
           children: [
             Padding(

@@ -1,6 +1,4 @@
-
 import 'package:craftmanapp/constants/util/useful_methods.dart';
-import 'package:craftmanapp/features/authentication/presentation/src/widget/authbutton.dart';
 import 'package:craftmanapp/features/booking/presentation/bloc/cubit/booking_cubit.dart';
 import 'package:craftmanapp/features/booking/presentation/widgets/src/booking_button.dart';
 import 'package:craftmanapp/features/booking/presentation/widgets/src/bookingtextfield.dart';
@@ -9,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../constants/export.dart';
+import '../../../../globalwidget/export.dart';
 
 class BookingDetail extends StatelessWidget {
   const BookingDetail({super.key});
@@ -187,17 +186,12 @@ class RatingModalSheet extends StatelessWidget {
               maxline: 6,
               hintext: 'Write about your experiance'),
           SizedBox(height: size.height * 0.04),
-          AuthButton(
-              isloading: watchBookingCubit.state is BookingLoadingState,
-              ontap: () => readBookingCubit.rateArtisan(),
+          Appbutton(
+              isLoading: watchBookingCubit.state is BookingLoadingState,
+              onTap: () => readBookingCubit.rateArtisan(),
               width: size.width,
               height: size.height * 0.05,
-              radius: size.width * 0.02,
-              child: AppText(
-                  text: 'Confirm',
-                  size: 14,
-                  color: Appcolors.white,
-                  fontweight: FontWeight.w600)),
+              label: 'Confirm'),
           SizedBox(height: size.height * 0.035),
         ],
       ),

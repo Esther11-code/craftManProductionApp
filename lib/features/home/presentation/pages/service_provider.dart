@@ -1,8 +1,8 @@
-
 import 'package:craftmanapp/constants/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../globalwidget/export.dart';
 import '../bloc/cubit/home_cubit.dart';
 import '../widget/export.dart';
 
@@ -26,7 +26,7 @@ class ServiceProviderDetail extends StatelessWidget {
           }
         },
         child: AppScaffold(
-            loadWithloader: watchHome.state is HomeLoading,
+            isloading: watchHome.state is HomeLoading,
             color: Appcolors.blue,
             body: Column(children: [
               SizedBox(height: size.height * 0.01),

@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../config/page route/page_route.dart';
 import '../../../../../constants/export.dart';
+import '../../../../../globalwidget/export.dart';
 import '../../../../splash_onboarding/data/local/onboardingimages.dart';
 import '../../bloc/cubit/home_cubit.dart';
 import '../export.dart';

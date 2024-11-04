@@ -1,6 +1,6 @@
+import 'package:craftmanapp/globalwidget/widgets/apptext.dart';
 import 'package:flutter/material.dart';
-import '../../../../../constants/appcolors.dart';
-import '../../../../../constants/apptext.dart';
+import '../../../../../constants/appcolors.dart'; 
 
 class SignupOrLogin extends StatelessWidget {
   const SignupOrLogin(

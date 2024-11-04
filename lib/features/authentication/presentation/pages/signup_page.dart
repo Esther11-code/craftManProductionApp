@@ -1,6 +1,8 @@
 import 'package:craftmanapp/config/page%20route/detail/route_name.dart';
 import 'package:craftmanapp/features/authentication/presentation/bloc/cubit/auth_cubit.dart';
 import 'package:craftmanapp/features/splash_onboarding/data/local/onboardingimages.dart';
+import 'package:craftmanapp/globalwidget/widgets/appscaffold.dart';
+import 'package:craftmanapp/globalwidget/widgets/apptext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../constants/export.dart';
@@ -22,7 +24,7 @@ class _SignupPageState extends State<SignupPage> {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthTokenSentState) {
-          Navigator.pushNamed(context, RouteName.mobileOtp);
+          Navigator.pushNamed(context, RouteName.emailotp);
         }
       },
       child: AppScaffold(

@@ -5,6 +5,7 @@ import 'package:craftmanapp/features/splash_onboarding/presentation/bloc/cubit/o
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../globalwidget/export.dart';
 import '../../../authentication/presentation/bloc/cubit/auth_cubit.dart';
 import '../../../authentication/presentation/pages/login_page.dart';
 import '../../../booking/presentation/bloc/cubit/booking_cubit.dart';
@@ -49,12 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
           if (state is LoginState) {
             Navigator.pushNamedAndRemoveUntil(
                 context, RouteName.bottomNav, (route) => false);
-            showDialog(
-                barrierDismissible: false,
-                context: context,
-                builder: (context) {
-                  return const AuthAlertDialog(title: 'Logged In');
-                });
+            Navigator.pushNamed(context, RouteName.successLogin);
             readHome.getCategories();
 
             readHome.getPopularService();

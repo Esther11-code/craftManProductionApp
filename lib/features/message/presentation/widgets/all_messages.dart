@@ -4,7 +4,8 @@ import 'package:craftmanapp/features/home/presentation/widget/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../constants/appcolors.dart';
-import '../../../../constants/apptext.dart';
+import '../../../../globalwidget/export.dart';
+ 
 
 class AllMessages extends StatelessWidget {
   const AllMessages({

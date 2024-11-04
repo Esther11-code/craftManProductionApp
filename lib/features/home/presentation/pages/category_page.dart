@@ -4,6 +4,7 @@ import 'package:craftmanapp/features/home/presentation/bloc/cubit/home_cubit.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../globalwidget/export.dart';
 import '../widget/export.dart';
 
 class Categories extends StatelessWidget {

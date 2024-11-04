@@ -6,7 +6,7 @@ class RouteName {
   static const fourthonboarding = '/onboard';
   static const bottomNav = '/bottomnav';
   static const signup = '/signup';
-  static const mobileOtp = '/mobileotp';
+  static const successLogin = '/successLogin';
   static const emailotp = '/emailotp';
   static const login = '/login';
   static const skilldetail = '/skillsdetail';

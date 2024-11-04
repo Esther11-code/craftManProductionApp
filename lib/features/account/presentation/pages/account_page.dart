@@ -1,11 +1,13 @@
 import 'package:craftmanapp/config/page%20route/page_route.dart';
 import 'package:craftmanapp/constants/export.dart';
-import 'package:craftmanapp/features/account/presentation/widgets/exports.dart';
+ 
 import 'package:craftmanapp/features/authentication/presentation/bloc/cubit/auth_cubit.dart';
 import 'package:craftmanapp/features/splash_onboarding/data/local/onboardingimages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../globalwidget/export.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -22,7 +24,6 @@ class AccountPage extends StatelessWidget {
       },
       child: AppScaffold(
           isloading: context.watch<AuthCubit>().state is AuthLoadingState,
-          color: Appcolors.blue,
           body: AppshadowContainer(
             shadowcolour: Appcolors.blue,
             color: Appcolors.blue,
@@ -79,20 +80,15 @@ class AccountPage extends StatelessWidget {
                         AccountSelection(
                             size: size, prefixIcon: Icons.help, title: 'Help'),
                         SizedBox(height: size.height * 0.04),
-                        AccountButton(
-                          ontap: () => showDialog(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (context) {
-                                return const DelecteAcctDialog();
-                              }),
-                          height: size.height * 0.06,
-                          child: AppText(
-                              text: 'Delete Account',
-                              size: 16,
-                              color: Appcolors.white,
-                              fontweight: FontWeight.w600),
-                        ),
+                        Appbutton(
+                            onTap: () => showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (context) {
+                                  return const DelecteAcctDialog();
+                                }),
+                            height: size.height * 0.06,
+                            label: 'Delete Account'),
                         SizedBox(height: size.height * 0.04),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -156,25 +152,18 @@ class DelecteAcctDialog extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AccountButton(
-                      ontap: () => Navigator.pop(context),
-                      buttoncolor: Appcolors.blue,
-                      width: size.width * 0.36,
-                      child: AppText(
-                          text: 'Cancel',
-                          color: Appcolors.white,
-                          fontweight: FontWeight.w600)),
-                  AccountButton(
-                      isloading:
-                          context.watch<AuthCubit>().state is AuthLoadingState,
-                      ontap: () => context.read<AuthCubit>().deleteUser(),
-                      radius: size.width * 0.02,
-                      buttoncolor: Appcolors.redColor,
-                      width: size.width * 0.36,
-                      child: AppText(
-                          text: 'OK',
-                          color: Appcolors.white,
-                          fontweight: FontWeight.w600))
+                  Appbutton(
+                    onTap: () => Navigator.pop(context),
+                    width: size.width * 0.36,
+                    label: 'Cancel',
+                  ),
+                  Appbutton(
+                    isLoading:
+                        context.watch<AuthCubit>().state is AuthLoadingState,
+                    onTap: () => context.read<AuthCubit>().deleteUser(),
+                    width: size.width * 0.36,
+                    label: 'OK',
+                  )
                 ],
               )
             ],

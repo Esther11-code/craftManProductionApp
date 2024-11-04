@@ -1,14 +1,14 @@
-
-import 'package:craftmanapp/constants/appscaffold.dart';
 import 'package:craftmanapp/constants/export.dart';
 import 'package:craftmanapp/features/account/presentation/bloc/cubit/account_cubit.dart';
-import 'package:craftmanapp/features/account/presentation/widgets/exports.dart';
+
 import 'package:craftmanapp/features/authentication/presentation/bloc/cubit/auth_cubit.dart';
 import 'package:craftmanapp/features/home/presentation/widget/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+
+import '../../../../globalwidget/export.dart';
 
 class AccountDetails extends StatelessWidget {
   const AccountDetails({super.key});
@@ -27,7 +27,6 @@ class AccountDetails extends StatelessWidget {
         },
         child: AppScaffold(
             isloading: watchAccCubit.state is AccountLoadingState,
-            color: Appcolors.blue,
             body: Column(children: [
               Padding(
                   padding: EdgeInsets.symmetric(
@@ -141,21 +140,18 @@ class AccountDetails extends StatelessWidget {
                             left: 0,
                             right: 0,
                             top: size.height * 0.55,
-                            child: AccountButton(
-                                isloading:
-                                    watchAccCubit.state is AccountLoadingState,
-                                width: size.width,
-                                height: size.height * 0.06,
-                                radius: size.width * 0.03,
-                                ontap: () {
-                                  readAccCubit.updateUserProfile(
-                                      mobile:
-                                          watchAuthCubit.phoneController.text);
-                                },
-                                child: AppText(
-                                    text: 'Confirm',
-                                    color: Appcolors.white,
-                                    fontweight: FontWeight.w600))),
+                            child: Appbutton(
+                              isLoading:
+                                  watchAccCubit.state is AccountLoadingState,
+                              width: size.width,
+                              height: size.height * 0.06,
+                              onTap: () {
+                                readAccCubit.updateUserProfile(
+                                    mobile:
+                                        watchAuthCubit.phoneController.text);
+                              },
+                              label: 'Confirm',
+                            )),
                       ])))
             ])));
   }
@@ -274,12 +270,12 @@ class AcctDetailInputfield extends StatelessWidget {
               SizedBox(
                 height: size.height * 0.03,
                 width: size.width * 0.7,
-                child: AcctTextfield(
-                  keyboardtype: keyboardtype,
-                  prefixicon: prefixIcon,
-                  enabled: enable,
+                child: ApptextField(
+                  keyboardType: keyboardtype,
+                  // prefixIcon: prefixIcon,
+                  // enabled: enable,
                   controller: controller,
-                  noborder: true,
+                  // noborder: true,
                 ),
               ),
               Visibility(

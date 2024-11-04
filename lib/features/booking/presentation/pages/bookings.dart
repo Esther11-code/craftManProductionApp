@@ -1,4 +1,3 @@
-
 import 'package:craftmanapp/config/page%20route/page_route.dart';
 import 'package:craftmanapp/constants/export.dart';
 import 'package:craftmanapp/features/booking/presentation/bloc/cubit/booking_cubit.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../constants/util/useful_methods.dart';
+import '../../../../globalwidget/export.dart';
 import '../../data/local/booking_images.dart';
 
 class Bookings extends StatelessWidget {
@@ -17,8 +17,7 @@ class Bookings extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return AppScaffold(
-        loadWithloader:
-            context.watch<BookingCubit>().state is BookingLoadingState,
+        isloading: context.watch<BookingCubit>().state is BookingLoadingState,
         color: Appcolors.blue,
         body: Column(children: [
           BookingAppbar(size: size),

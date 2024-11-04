@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../constants/export.dart';
+import '../../../../../globalwidget/export.dart';
 import '../../bloc/cubit/home_cubit.dart';
 import '../export.dart';
 

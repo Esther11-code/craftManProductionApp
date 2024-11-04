@@ -1,8 +1,7 @@
-
 import 'package:craftmanapp/constants/export.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../widgets/exports.dart';
+ 
+import '../../../../globalwidget/export.dart';
 
 class ChangePassword extends StatelessWidget {
   const ChangePassword({super.key});
@@ -46,17 +45,11 @@ class ChangePasswordButon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AccountButton(
-      width: size.width,
-      height: size.height * 0.06,
-      radius: size.width * 0.03,
-      ontap: () {},
-      child: AppText(
-          text: 'Confirm',
-          color: Appcolors.blue,
-          fontweight: FontWeight.w700,
-          size: 14),
-    );
+    return Appbutton(
+        width: size.width,
+        height: size.height * 0.06,
+        onTap: () {},
+        label: 'Confirm');
   }
 }
 
@@ -72,20 +65,20 @@ class ChanePasswordTextfields extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: size.height * 0.02),
-            AcctTextfield(
-                hintext: 'Current Password',
-                obscure: true,
-                suffixicon: Icon(Icons.visibility, size: 25.sp)),
+            const ApptextField(
+                hintText: 'Current Password',
+                // obscure: true,
+                sufixIcon: Icons.visibility),
             SizedBox(height: size.height * 0.02),
-            AcctTextfield(
-                hintext: 'New Password',
-                obscure: true,
-                suffixicon: Icon(Icons.visibility, size: 25.sp)),
+            const ApptextField(
+                hintText: 'New Password',
+                // obscure: true,
+                sufixIcon: Icons.visibility),
             SizedBox(height: size.height * 0.02),
-            AcctTextfield(
-                hintext: 'Confirm Password',
-                obscure: true,
-                suffixicon: Icon(Icons.visibility, size: 25.sp)),
+            const ApptextField(
+                hintText: 'Confirm Password',
+                // obscure: true,
+                sufixIcon: Icons.visibility),
             SizedBox(height: size.height * 0.02),
           ],
         ));
