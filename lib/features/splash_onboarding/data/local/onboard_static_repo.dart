@@ -5,7 +5,7 @@ class OnboardStaticRepo {
     BottomNavModel(icon: Icons.home_filled, title: 'Home'),
     BottomNavModel(icon: Icons.chat, title: 'Messages'),
     BottomNavModel(icon: Icons.event, title: 'Booking'),
-    BottomNavModel(icon: Icons.account_circle, title: 'Profile')
+    BottomNavModel(icon: Icons.account_circle_outlined, title: 'Profile')
   ];
 }
 

@@ -15,7 +15,8 @@ class AppshadowContainer extends StatelessWidget {
       this.radius,
       this.onTap,
       this.borderColor,
-      this.border = false, this.alignment});
+      this.border = false,
+      this.alignment});
   final Widget? child;
   final Color? shadowcolour, color, borderColor;
   final EdgeInsetsGeometry? padding, margin;

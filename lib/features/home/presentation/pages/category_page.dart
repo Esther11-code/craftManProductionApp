@@ -1,4 +1,3 @@
-
 import 'package:craftmanapp/constants/export.dart';
 import 'package:craftmanapp/features/home/presentation/bloc/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
@@ -15,18 +14,11 @@ class Categories extends StatelessWidget {
     final watchHome = context.watch<HomeCubit>();
     final size = MediaQuery.sizeOf(context);
     return AppScaffold(
-        color: Appcolors.blue,
+      
+        color: Appcolors.white,
         body: Column(children: [
-          const CustomAppbar(title: 'Categories'),
+          const CustomAppbar(title: 'All Services'),
           SizedBox(height: size.height * 0.02),
-          Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: size.width * 0.04, vertical: size.width * 0.015),
-              color: Appcolors.white,
-              child: HomeTextfield(
-                  size: size,
-                  prefixicon: Icon(Icons.search, size: 20.sp),
-                  hintext: 'Search Categories')),
           Expanded(
               child: Container(
                   padding: EdgeInsets.symmetric(
@@ -35,12 +27,12 @@ class Categories extends StatelessWidget {
                   color: Appcolors.white,
                   width: size.width,
                   child: GridView.count(
-                      crossAxisSpacing: size.width * 0,
-                      mainAxisSpacing: size.width * 0,
-                      childAspectRatio: 1.0 / 1.3,
-                      crossAxisCount: 3,
+                      crossAxisCount: 2,
+                      childAspectRatio: 1,
+                      crossAxisSpacing: size.width * 0.03,
+                      mainAxisSpacing: size.width * 0.03,
                       children: List.generate(
-                          watchHome.category.length,
+                          10,
                           (index) =>
                               CategorieContainer(index: index, size: size)))))
         ]));

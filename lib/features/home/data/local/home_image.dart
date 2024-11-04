@@ -1,3 +1,4 @@
 class HomeImages {
-  static const empty = 'assets/home/empty.png';
+  static const avatar = 'assets/home/Avatar.png';
+  static const service = 'assets/home/plumber.png';
 }

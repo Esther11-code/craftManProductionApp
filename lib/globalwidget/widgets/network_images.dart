@@ -39,7 +39,7 @@ class AppNetwokImage extends StatelessWidget {
                     ),
                 errorWidget: (context, url, error) => ClipRRect(
                       borderRadius: BorderRadius.circular(radius ?? 0),
-                      child: Image.asset(OnboardingImagesData.onboarding1,
+                      child: Image.asset(imageUrl,
                           width: width, height: height, fit: BoxFit.contain),
                     )),
           );

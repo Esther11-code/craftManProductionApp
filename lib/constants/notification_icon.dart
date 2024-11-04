@@ -14,6 +14,6 @@ class NotificationIcon extends StatelessWidget {
         shadowcolour: Appcolors.lightgrey,
         padding: EdgeInsets.all(2.w),
         onTap: () => Navigator.pushNamed(context, RouteName.notification),
-        child: Icon(Icons.notifications_outlined, size: 30.sp));
+        child: Icon(Icons.notifications, size: 25.sp));
   }
 }

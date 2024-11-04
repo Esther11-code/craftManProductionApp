@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:craftmanapp/constants/util/useful_methods.dart';
 import 'package:craftmanapp/features/authentication/presentation/bloc/cubit/auth_cubit.dart';
+import 'package:craftmanapp/features/home/data/local/home_image.dart';
 import 'package:craftmanapp/features/home/data/local/home_static_repo.dart';
 import 'package:craftmanapp/features/home/presentation/bloc/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
@@ -27,11 +28,11 @@ class HomeAppbar extends StatelessWidget {
             radius: 1000.r,
             shadowcolour: Appcolors.lightgrey,
             child: AppNetwokImage(
-                height: size.width * 0.15,
+                height: size.width * 0.12,
                 fit: BoxFit.cover,
-                width: size.width * 0.15,
+                width: size.width * 0.12,
                 radius: 1000.r,
-                imageUrl: ''),
+                imageUrl: HomeImages.avatar),
           ),
           10.horizontalSpace,
           Column(
@@ -61,12 +62,19 @@ class HomeService extends StatelessWidget {
   Widget build(BuildContext context) {
     final catgory = context.watch<HomeCubit>().homeCategory;
     return Expanded(
-        child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
-            children: List.generate(
-              0,
-              (index) => CategorieContainer(index: index, size: size),
-            )));
+        child: GridView.builder(
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1,
+        crossAxisSpacing: size.width * 0.03,
+        mainAxisSpacing: size.width * 0.03,
+      ),
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return CategorieContainer(index: index, size: size);
+      },
+    ));
   }
 }
 
@@ -107,38 +115,31 @@ class CategorieContainer extends StatelessWidget {
               context.read<HomeCubit>().getArtisans(
                   id: watchHome.category[index].id!,
                   category: watchHome.category[index].category!);
-              Navigator.pushNamed(context, RouteName.skilldetail);
+              
             },
             shadowcolour: Appcolors.lightgrey.withOpacity(0.3),
             margin: EdgeInsets.only(
-                right: size.width * 0.035,
-                bottom: size.width * 0.03,
-                top: size.width * 0.03),
+                bottom: size.width * 0.03, top: size.width * 0.03),
             padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
-            width: size.width * 0.3,
+            // width: size.width * 0.3,
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Icon(
-                  HomeStaticRepo.servicesIcon[
-                      watchHome.category[index].category!.split(' ').first],
-                   
-                  size: 45.sp),
+              Expanded(
+                child: Image.asset(
+                  HomeImages.service,
+                  height: size.width * 0.35,
+                  fit: BoxFit.cover,
+                  width: size.width * 0.12,
+                ),
+              ),
               SizedBox(height: size.height * 0.01),
               SizedBox(
                   height: size.height * 0.042,
-                  child: AppText(
+                  child: const AppText(
                       textalign: TextAlign.center,
-                      text: watchHome.category[index].category!
-                                  .split(' ')
-                                  .first ==
-                              watchHome.category[index].category!
-                                  .split(' ')
-                                  .last
-                          ? watchHome.category[index].category!.split(' ').first
-                          : '${watchHome.category[index].category!.split(' ').first}\n${watchHome.category[index].category!.split(' ').lastOrNull ?? ''}',
-                 
-                      size: 14,
-                      fontweight: FontWeight.w500))
+                      text: "Plumber Service",
+                      size: 18,
+                      fontweight: FontWeight.w400))
             ]));
       },
     );

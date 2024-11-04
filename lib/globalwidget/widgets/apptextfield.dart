@@ -17,7 +17,9 @@ class ApptextField extends StatelessWidget {
       this.onChange,
       this.onTap,
       this.readOnly = false,
-      this.keyboardType});
+      this.keyboardType,
+      this.size,
+      this.fontWeight});
   final String? title, hintText;
   final int? malxLine;
   final IconData? prefixIcon, sufixIcon;
@@ -27,13 +29,18 @@ class ApptextField extends StatelessWidget {
   final Function()? onTap;
   final bool readOnly;
   final TextInputType? keyboardType;
+  final double? size;
+  final FontWeight? fontWeight;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppText(text: title ?? "", size: 14, fontweight: FontWeight.w500),
-        2.verticalSpace,
+        AppText(
+            text: title ?? "",
+            size: size ?? 14,
+            fontweight: fontWeight ?? FontWeight.w500),
+        4.verticalSpace,
         TextFormField(
             onTap: onTap,
             readOnly: readOnly,

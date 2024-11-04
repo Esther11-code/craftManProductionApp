@@ -1,5 +1,8 @@
 import 'package:craftmanapp/globalwidget/export.dart';
+import 'package:craftmanapp/globalwidget/widgets/appshadowcontainer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'export.dart';
 
@@ -14,13 +17,24 @@ class CustomAppbar extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
       child: Row(
         children: [
-          GestureDetector(
-              onTap: onTap ?? () => Navigator.pop(context),
-              child: Icon(Icons.arrow_back_ios,
-                  size: 25.sp, color: Appcolors.white)),
+          AppshadowContainer(
+            shadowcolour: Appcolors.lightgrey,
+            padding: EdgeInsets.all(2.w),
+            child: GestureDetector(
+                onTap: onTap ?? () => Navigator.pop(context),
+                child: Icon(CupertinoIcons.back,
+                    size: 25.sp, color: Appcolors.blackColor)),
+          ),
           SizedBox(width: size.width * 0.03),
-          AppText(
-              text: title, fontweight: FontWeight.w600, color: Appcolors.white)
+          Expanded(
+            child: Center(
+              child: AppText(
+                  text: title,
+                  fontweight: FontWeight.w600,
+                  color: Appcolors.blackColor),
+            ),
+          ),
+          const NotificationIcon()
         ],
       ),
     );

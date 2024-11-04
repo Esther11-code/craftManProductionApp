@@ -14,14 +14,19 @@ class BottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     final watchOnboarding = context.watch<OnboardingCubit>();
     final readOnboarding = context.read<OnboardingCubit>();
-
+    final size = MediaQuery.sizeOf(context);
     return Scaffold(
         body: watchOnboarding.screens[watchOnboarding.bottonnavSelectedIndex],
         bottomNavigationBar: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             AppshadowContainer(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              shadowcolour: Appcolors.lightgrey,
+              padding: EdgeInsets.only(
+                  right: size.width * 0.1,
+                  left: size.width * 0.1,
+                  top: size.height * 0.005,
+                  bottom: size.height * 0.02),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(
@@ -35,12 +40,12 @@ class BottomNav extends StatelessWidget {
                                 Icon(
                                     OnboardStaticRepo
                                         .bottomNavItems[index].icon,
-                                    size: 30.sp,
+                                    size: 25.sp,
                                     color: watchOnboarding
                                                 .bottonnavSelectedIndex ==
                                             index
                                         ? Appcolors.blackColor
-                                        : Appcolors.lightgrey),
+                                        : Appcolors.homeIconColor),
                                 Visibility(
                                   visible:
                                       watchOnboarding.bottonnavSelectedIndex ==

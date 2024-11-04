@@ -45,7 +45,7 @@ class SkillsDetail extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(height: size.height * 0.05),
-                            Image.asset(HomeImages.empty,
+                            Image.asset(HomeImages.avatar,
                                 height: size.height * 0.5,
                                 width: size.width,
                                 fit: BoxFit.cover),
