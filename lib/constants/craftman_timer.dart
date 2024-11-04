@@ -1,4 +1,3 @@
-
 import 'package:craftmanapp/constants/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,11 +16,11 @@ class CraftmanTimer extends StatelessWidget {
     return TimerCountdown(
         onEnd: onEnd,
         spacerWidth: 1,
-        colonsTextStyle: GoogleFonts.poppins(
+        colonsTextStyle: GoogleFonts.inter(
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             color: timerColor ?? Appcolors.redColor),
-        timeTextStyle: GoogleFonts.poppins(
+        timeTextStyle: GoogleFonts.inter(
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             color: timerColor ?? Appcolors.redColor),

@@ -9,3 +9,4 @@ export './widgets/icon_with_title.dart';
 export './widgets/network_images.dart';
 export './widgets/appbutton.dart';
 export './widgets/app_checkbox.dart';
+export './widgets/appbar_widget.dart';

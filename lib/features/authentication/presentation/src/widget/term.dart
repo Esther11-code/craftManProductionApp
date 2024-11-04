@@ -33,12 +33,8 @@ class Terms extends StatelessWidget {
             radius: size.width * 0.02,
           ),
           SizedBox(
-            width: size.width * 0.8,
-            child: AppText(
-                fontweight: FontWeight.w600,
-                color: Appcolors.blue,
-                size: 14,
-                text: title),
+            width: size.width * 0.82,
+            child: AppText(size: 13, fontweight: FontWeight.w500, text: title),
           )
         ],
       ),

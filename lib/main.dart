@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
                           ColorScheme.fromSeed(seedColor: Colors.white),
                       useMaterial3: true),
                   initialRoute: RouteName.splash,
-                  onGenerateRoute: AppRoute.onGeneratedRoute);
+                  onGenerateRoute: AppRoute.onGeneratedRoute,navigatorKey: navigatorKey);
             }));
   }
 }

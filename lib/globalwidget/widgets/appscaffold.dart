@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
- 
 
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -9,7 +8,11 @@ import '../export.dart';
 
 class AppScaffold extends StatelessWidget {
   const AppScaffold(
-      {super.key, this.color, required this.body, this.floatingActionButton,   this.isloading=false});
+      {super.key,
+      this.color,
+      required this.body,
+      this.floatingActionButton,
+      this.isloading = false});
   final Color? color;
   final Widget? body, floatingActionButton;
 
@@ -20,33 +23,31 @@ class AppScaffold extends StatelessWidget {
         floatingActionButton: floatingActionButton,
         backgroundColor: color ?? Appcolors.white,
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(0.h),
+            preferredSize: Size.fromHeight(2.h),
             child: AppBar(
                 forceMaterialTransparency: true,
                 automaticallyImplyLeading: false,
                 backgroundColor: color ?? Appcolors.white)),
-         body: Stack(
-        children: [
-          AbsorbPointer(
-            absorbing: isloading,
-            child: Opacity(opacity: isloading ? 0.2 : 1.0, child: body),
-          ),
-          isloading
-              ? Column(
-                  children: [
-                    SizedBox(height: 220.h),
-                    Center(
-                        child: LoadingAnimationWidget.fourRotatingDots(
-                            color: Appcolors.blackColor, size: 60.sp)),
-                    
-                    3.verticalSpace,
-              const AppText(
-                        text:   ' Please wait...'  ,
-                        fontweight: FontWeight.w600),
-                  ],
-                )
-              : const SizedBox.shrink()
-        ],
-      )  );
+        body: Stack(
+          children: [
+            AbsorbPointer(
+              absorbing: isloading,
+              child: Opacity(opacity: isloading ? 0.2 : 1.0, child: body),
+            ),
+            isloading
+                ? Column(
+                    children: [
+                      SizedBox(height: 220.h),
+                      Center(
+                          child: LoadingAnimationWidget.fourRotatingDots(
+                              color: Appcolors.blackColor, size: 60.sp)),
+                      3.verticalSpace,
+                      const AppText(
+                          text: ' Please wait...', fontweight: FontWeight.w600),
+                    ],
+                  )
+                : const SizedBox.shrink()
+          ],
+        ));
   }
 }
