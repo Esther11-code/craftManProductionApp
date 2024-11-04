@@ -22,22 +22,29 @@ class HomeAppbar extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          AppshadowContainer(
+            radius: 1000.r,
+            shadowcolour: Appcolors.lightgrey,
+            child: AppNetwokImage(
+                height: size.width * 0.15,
+                fit: BoxFit.cover,
+                width: size.width * 0.15,
+                radius: 1000.r,
+                imageUrl: ''),
+          ),
+          10.horizontalSpace,
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppText(
                   text:
                       '${Utils.getGreting()}, ${context.watch<AuthCubit>().user.firstName}',
-                  color: Appcolors.white,
                   fontweight: FontWeight.w700),
-              AppText(
-                  text: 'Lets get things done today!',
-                  size: 14,
-                  color: Appcolors.white),
+              const AppText(text: 'Lets get things done today!', size: 14),
             ],
           ),
+          const Spacer(),
           const NotificationIcon(),
         ],
       ),
@@ -45,8 +52,8 @@ class HomeAppbar extends StatelessWidget {
   }
 }
 
-class HomeCategoriesAndPopularService extends StatelessWidget {
-  const HomeCategoriesAndPopularService({super.key, required this.size});
+class HomeService extends StatelessWidget {
+  const HomeService({super.key, required this.size});
 
   final Size size;
 
@@ -54,72 +61,12 @@ class HomeCategoriesAndPopularService extends StatelessWidget {
   Widget build(BuildContext context) {
     final catgory = context.watch<HomeCubit>().homeCategory;
     return Expanded(
-        child: ListView(children: [
-      SizedBox(height: size.height * 0.01),
-      HomeCarousel(size: size),
-      SizedBox(height: size.height * 0.01),
-      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        AppText(
-            text: 'Categories',
-            fontweight: FontWeight.w800,
-            color: Appcolors.blue),
-        GestureDetector(
-            onTap: () => Navigator.pushNamed(context, RouteName.categories),
-            child: AppText(text: 'View All', size: 16, color: Appcolors.orange))
-      ]),
-      SizedBox(
-          height: size.height * 0.2,
-          child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: List.generate(catgory.length,
-                  (index) => CategorieContainer(index: index, size: size)))),
-      SizedBox(height: size.height * 0.025),
-      AppText(
-          text: 'Popular Services',
-          fontweight: FontWeight.w800,
-          color: Appcolors.blue),
-      SizedBox(height: size.height * 0.01),
-      SizedBox(
-          height: size.height * 0.3,
-          child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: List.generate(
-                  6,
-                  (index) => AppshadowContainer(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: size.width * 0.03,
-                          vertical: size.width * 0.02),
-                      shadowcolour: Appcolors.lightgrey.withOpacity(0.3),
-                      margin: EdgeInsets.only(
-                          right: size.width * 0.035,
-                          bottom: size.width * 0.03,
-                          top: size.width * 0.03),
-                      width: size.width * 0.5,
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                                width: size.width,
-                                height: size.width * 0.4,
-                                decoration: BoxDecoration(
-                                    color: Appcolors.blue,
-                                    image: const DecorationImage(
-                                        fit: BoxFit.contain,
-                                        image: AssetImage(
-                                            OnboardingImagesData.welcome)),
-                                    borderRadius: BorderRadius.circular(
-                                        size.width * 0.03))),
-                            AppText(
-                                text: 'WallPainting',
-                                color: Appcolors.blue,
-                                size: 16,
-                                fontweight: FontWeight.w900),
-                            AppText(
-                                text: 'Painter',
-                                color: Appcolors.blue,
-                                size: 16)
-                          ])))))
-    ]));
+        child: ListView(
+            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+            children: List.generate(
+              0,
+              (index) => CategorieContainer(index: index, size: size),
+            )));
   }
 }
 
@@ -174,7 +121,7 @@ class CategorieContainer extends StatelessWidget {
               Icon(
                   HomeStaticRepo.servicesIcon[
                       watchHome.category[index].category!.split(' ').first],
-                  color: HomeStaticRepo.servicesColor[index],
+                   
                   size: 45.sp),
               SizedBox(height: size.height * 0.01),
               SizedBox(
@@ -189,7 +136,7 @@ class CategorieContainer extends StatelessWidget {
                                   .last
                           ? watchHome.category[index].category!.split(' ').first
                           : '${watchHome.category[index].category!.split(' ').first}\n${watchHome.category[index].category!.split(' ').lastOrNull ?? ''}',
-                      color: Appcolors.blue,
+                 
                       size: 14,
                       fontweight: FontWeight.w500))
             ]));
@@ -205,27 +152,45 @@ class HomeCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      options: CarouselOptions(
-          autoPlayInterval: const Duration(seconds: 6),
-          height: size.height * 0.25,
-          autoPlay: true),
-      items: [1, 2, 3, 4, 5].map((i) {
-        return Builder(
-          builder: (BuildContext context) {
-            return Container(
-              width: size.width,
-              margin: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(size.width * 0.03),
-                  color: Appcolors.lightgrey,
-                  image: const DecorationImage(
-                      fit: BoxFit.contain,
-                      image: AssetImage(OnboardingImagesData.welcome))),
-            );
-          },
-        );
-      }).toList(),
+    return Column(
+      children: [
+        AppshadowContainer(
+          width: size.width,
+          color: const Color.fromARGB(217, 21, 21, 11),
+          margin: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                  width: size.width * 0.4,
+                  child: AppText(
+                      maxline: 6,
+                      text: 'Get the best services providers with our services',
+                      color: Appcolors.white,
+                      fontweight: FontWeight.w500)),
+              Image.asset(OnboardingImagesData.onboarding1,
+                  height: size.height * 0.18)
+            ],
+          ),
+        ),
+        10.verticalSpace,
+        Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+                3,
+                (index) => AppshadowContainer(
+                      border: index != 0,
+                      borderColor: const Color.fromARGB(217, 21, 21, 11),
+                      margin: EdgeInsets.only(right: size.width * 0.02),
+                      color: index == 0
+                          ? const Color.fromARGB(217, 21, 21, 11)
+                          : const Color.fromARGB(217, 21, 21, 11)
+                              .withOpacity(0.1),
+                      width: index == 0 ? size.width * 0.15 : size.width * 0.04,
+                      height: size.width * 0.04,
+                    )))
+      ],
     );
   }
 }

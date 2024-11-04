@@ -1,5 +1,5 @@
-
 import 'package:craftmanapp/constants/export.dart';
+import 'package:craftmanapp/globalwidget/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,9 +10,10 @@ class NotificationIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return AppshadowContainer(
+        shadowcolour: Appcolors.lightgrey,
+        padding: EdgeInsets.all(2.w),
         onTap: () => Navigator.pushNamed(context, RouteName.notification),
-        child: Icon(Icons.notifications_outlined,
-            color: Appcolors.white, size: 30.sp));
+        child: Icon(Icons.notifications_outlined, size: 30.sp));
   }
 }

@@ -11,20 +11,19 @@ class AppNetwokImage extends StatelessWidget {
       this.fit,
       required this.imageUrl,
       this.radius,
-      this.title = '',
-      this.bank = true});
+      this.title = ''});
   final double height, width;
   final BoxFit? fit;
   final String imageUrl, title;
   final double? radius;
-  final bool bank;
+
   @override
   Widget build(BuildContext context) {
     return imageUrl == ''
         ? ClipRRect(
             borderRadius: BorderRadius.circular(radius ?? 0),
             child: Image.asset(OnboardingImagesData.onboarding1,
-                width: width, height: height, fit: BoxFit.fill),
+                width: width, height: height, fit: fit),
           )
         : ClipRRect(
             borderRadius: BorderRadius.circular(radius ?? 0),
